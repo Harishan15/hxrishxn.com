@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import HomeHero from '../src/components/home/HomeHero';
+import HomeLinksLayout from '../src/components/home/HomeLinksLayout';
 import MainLayout from '../src/layout/MainLayout';
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
 
       <MainLayout>
         <HomeHero />
+        <HomeLinksLayout />
       </MainLayout>
     </Box>
   );
