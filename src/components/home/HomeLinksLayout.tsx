@@ -4,7 +4,7 @@ import LinkCard from './micro-components/LinkCard';
 
 const HomeLinksLayout = () => {
   return (
-    <Box sx={{ mt: 4 }}>
+    <Box sx={{ my: { xs: 4, md: 6 } }}>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
@@ -42,8 +42,8 @@ const HomeLinksLayout = () => {
           <Grid item xs={12} md={6}>
             <LinkCard
               title="Credits"
-              description=""
-              image="https://images.unsplash.com/photo-1542546068979-b6affb46ea8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80"
+              description="Credits to all the authors of freely used resources in this website."
+              image="https://images.unsplash.com/photo-1516838431606-353668485118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
               gridNo={0}
             />
           </Grid>
