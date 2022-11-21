@@ -6,7 +6,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
 
@@ -16,34 +16,52 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { toggleDarkMode } from '../../slices/appSlice';
 import { HxMenuIcon } from './Icons';
+import HeaderModal from './HeaderModal';
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector((state) => state.app.darkMode);
 
+  const [headerModalOpen, setHeaderModalOpen] = useState(false);
+
   return (
-    <AppBar
-      position="fixed"
-      sx={{ bgcolor: '#ffffff99', flexGrow: 1, backdropFilter: 'blur(10px)' }}
-    >
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <HxMenuIcon />
-        </IconButton>
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          bgcolor: darkMode ? '#22222299' : '#ffffff99',
+          flexGrow: 1,
+          backdropFilter: 'blur(10px)',
+        }}
+      >
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setHeaderModalOpen(true)}
+          >
+            <HxMenuIcon />
+          </IconButton>
 
-        <Typography variant="h6" component="div">
-          Hxrishxn
-        </Typography>
+          <Typography variant="h6" component="div">
+            Hxrishxn
+          </Typography>
 
-        <IconButton
-          aria-label="dark mode"
-          onClick={() => dispatch(toggleDarkMode())}
-          sx={{ mr: 2 }}
-        >
-          {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+          <IconButton
+            aria-label="dark mode"
+            onClick={() => dispatch(toggleDarkMode())}
+          >
+            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      <HeaderModal
+        open={headerModalOpen}
+        handleClose={() => setHeaderModalOpen(false)}
+      />
+    </>
   );
 };
 
